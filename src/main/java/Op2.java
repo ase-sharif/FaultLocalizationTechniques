@@ -10,8 +10,11 @@ public class Op2 {
   private boolean[][] coverageMatrix; // coverage matrix -- [test][statement]
 
   private int numberOfTests; // number of test cases
-  private int numberOfStatements;
+  private int numberOfStatements; // number of statements
 
+  /**
+   * Constructor of Op2 class
+   */
   public Op2(boolean[][] coverageMatrix) {
     this.coverageMatrix = coverageMatrix;
     numberOfTests = coverageMatrix.length;
