@@ -8,12 +8,15 @@
  */
 public class Op2 {
   private boolean[][] coverageMatrix; // coverage matrix -- [test][statement]
+  private boolean[] failTestCases; // failing test cases -- [test]
   private boolean[] liveTestCases; // live test cases -- [test]
   private boolean[] badCoverage; // bad coverage (no coverage information, usually due to a segmentation fault) -- [test]
   private boolean isBadCoverageCalculated = false;
 
   private int numberOfTests; // number of test cases
   private int numberOfStatements; // number of statements
+  private int totalLiveFail;
+  private int totalLivePass;
 
 
   /**
@@ -46,6 +49,21 @@ public class Op2 {
         }
       }
       isBadCoverageCalculated = true;
+    }
+  }
+
+  private void calculateTotalLiveFailAndPass() {
+    totalLiveFail = 0;
+    totalLivePass = 0;
+    for (int i = 0; i < numberOfTests; i++) {
+      if (liveTestCases[i]) {
+        if (!badCoverage[i]) {
+          if (failTestCases[i]) {
+            totalLiveFail++;
+          } else
+            totalLivePass++;
+        }
+      }
     }
   }
 
