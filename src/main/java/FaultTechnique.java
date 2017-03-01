@@ -12,7 +12,10 @@ abstract public class FaultTechnique {
   private int totalLiveFail;
   private int totalLivePass;
   private int[] passOnStatement; // p(s), for every s and considering liveness of test cases -- [statement]
-  private int[] failOnStatement; // f(s), for every s and considering liveness of test cases -- [statemen]
+  private int[] failOnStatement; // f(s), for every s and considering liveness of test cases -- [statement]
+
+  private double[] passRatio; // (p(s)/total live pass), for every s -- [statement]
+  private double[] failRatio; // (f(s)/total live  fail), for every s -- [statement]
 
 
   /**
@@ -85,6 +88,24 @@ abstract public class FaultTechnique {
             }
           }
         }
+      }
+    }
+  }
+
+  private void calculatePassRatioAndFailRatio() {
+    passRatio = new double[numberOfStatements];
+    failRatio = new double[numberOfStatements];
+
+    for (int i = 0; i < numberOfStatements; i++) {
+      if (totalLivePass == 0) {
+        passRatio[i] = 0d;
+      } else {
+        passRatio[i] = (double) passOnStatement[i] / (double) totalLivePass;
+      }
+      if (totalLiveFail == 0) {
+        failRatio[i] = 0d;
+      } else {
+        failRatio[i] = (double) failOnStatement[i] / (double) totalLiveFail;
       }
     }
   }
