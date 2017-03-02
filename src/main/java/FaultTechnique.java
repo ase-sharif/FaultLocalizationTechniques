@@ -16,6 +16,8 @@ abstract public class FaultTechnique {
 
   private double[] passRatio; // (p(s)/total live pass), for every s -- [statement]
   private double[] failRatio; // (f(s)/total live  fail), for every s -- [statement]
+  private double[] suspiciousness; // -- [statement]
+  private double[] confidence;// -- [statement]
 
 
   /**
@@ -109,4 +111,6 @@ abstract public class FaultTechnique {
       }
     }
   }
+
+  abstract void calculateSuspiciousnessAndConfidence();
 }

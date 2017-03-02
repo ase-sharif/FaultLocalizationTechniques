@@ -17,4 +17,8 @@ public class Op2 extends FaultTechnique {
   public Op2(boolean[][] coverageMatrix) {
     super(coverageMatrix);
   }
+
+  void calculateSuspiciousnessAndConfidence() {
+    
+  }
 }
