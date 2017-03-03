@@ -1,5 +1,6 @@
+package core;
 
-abstract public class FaultTechnique {
+abstract public class FaultLocalizationTechnique {
   private boolean[][] coverageMatrix; // coverage matrix -- [test][statement]
   private boolean[] failTestCases; // failing test cases -- [test]
   private boolean[] liveTestCases; // live test cases -- [test]
@@ -23,7 +24,7 @@ abstract public class FaultTechnique {
   /**
    * Constructor of fault localization technique class
    */
-  public FaultTechnique(boolean[][] coverageMatrix) {
+  public FaultLocalizationTechnique(boolean[][] coverageMatrix) {
     this.coverageMatrix = coverageMatrix;
     numberOfTests = coverageMatrix.length;
     numberOfStatements = coverageMatrix[0].length;
@@ -110,6 +111,26 @@ abstract public class FaultTechnique {
         failRatio[i] = (double) failOnStatement[i] / (double) totalLiveFail;
       }
     }
+  }
+
+  protected double[] getSuspiciousness() {
+    return suspiciousness;
+  }
+
+  protected void setSuspiciousness(double[] suspiciousness) {
+    this.suspiciousness = suspiciousness;
+  }
+
+  protected double[] getConfidence() {
+    return confidence;
+  }
+
+  protected void setConfidence(double[] confidence) {
+    this.confidence = confidence;
+  }
+
+  protected int getNumberOfStatements() {
+    return numberOfStatements;
   }
 
   abstract void calculateSuspiciousnessAndConfidence();
