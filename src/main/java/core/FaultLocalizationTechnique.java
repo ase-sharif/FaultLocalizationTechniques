@@ -1,6 +1,6 @@
 package core;
 
-abstract public class FaultLocalizationTechnique {
+abstract class FaultLocalizationTechnique {
   private boolean[][] coverageMatrix; // coverage matrix -- [test][statement]
   private boolean[] failTestCases; // failing test cases -- [test]
   private boolean[] liveTestCases; // live test cases -- [test]
@@ -113,24 +113,57 @@ abstract public class FaultLocalizationTechnique {
     }
   }
 
-  protected double[] getSuspiciousness() {
+  double[] getSuspiciousness() {
     return suspiciousness;
   }
 
-  protected void setSuspiciousness(double[] suspiciousness) {
+  void setSuspiciousness(double[] suspiciousness) {
     this.suspiciousness = suspiciousness;
   }
 
-  protected double[] getConfidence() {
+  void setSuspiciousness(int i, double value) {
+    this.suspiciousness[i] = value;
+  }
+
+  double[] getConfidence() {
     return confidence;
   }
 
-  protected void setConfidence(double[] confidence) {
+  void setConfidence(double[] confidence) {
     this.confidence = confidence;
   }
 
-  protected int getNumberOfStatements() {
+  void setConfidence(int i, double value) {
+    this.confidence[i] = value;
+  }
+
+  int getNumberOfStatements() {
     return numberOfStatements;
+  }
+
+
+  int[] getPassOnStatement() {
+    return getPassOnStatement();
+  }
+
+  int[] getFailOnStatement() {
+    return getFailOnStatement();
+  }
+
+  int getTotalLivePass() {
+    return totalLivePass;
+  }
+
+  int getTotalLiveFail() {
+    return totalLiveFail;
+  }
+
+  double[] getPassRatio() {
+    return passRatio;
+  }
+
+  double[] getFailRatio() {
+    return failRatio;
   }
 
   abstract void calculateSuspiciousnessAndConfidence();
