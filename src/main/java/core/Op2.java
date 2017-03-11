@@ -12,7 +12,7 @@ public class Op2 extends FaultLocalizationTechnique {
 
 
   /**
-   * Constructor of core.Op2 class
+   * Constructor of Op2 class
    *
    * @param coverageMatrix
    */
