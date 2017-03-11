@@ -1,7 +1,7 @@
 package core;
 
 /**
- * Calculates suspiciousness and confidence values according to the core.Op2 fault localization
+ * Calculates suspiciousness and confidence values according to the Op2 fault localization
  * technique.
  * The usage mode is to create a coverage matrix that specifies which program
  * elements are executed by which test cases. In terms of this implementation, each program element called
