@@ -24,7 +24,7 @@ abstract class FaultLocalizationTechnique {
   /**
    * Constructor of fault localization technique class
    */
-  public FaultLocalizationTechnique(boolean[][] coverageMatrix) {
+  FaultLocalizationTechnique(boolean[][] coverageMatrix) {
     this.coverageMatrix = coverageMatrix;
     numberOfTests = coverageMatrix.length;
     numberOfStatements = coverageMatrix[0].length;
@@ -113,6 +113,14 @@ abstract class FaultLocalizationTechnique {
     }
   }
 
+  public void compute() {
+    calculateBadTestCoverage();
+    calculateTotalLiveFailAndPass();
+    calculatePassOnStmtAndFailOnStmt();
+    calculatePassRatioAndFailRatio();
+    calculateSuspiciousnessAndConfidence();
+  }
+
   double[] getSuspiciousness() {
     return suspiciousness;
   }
@@ -143,11 +151,11 @@ abstract class FaultLocalizationTechnique {
 
 
   int[] getPassOnStatement() {
-    return getPassOnStatement();
+    return passOnStatement;
   }
 
   int[] getFailOnStatement() {
-    return getFailOnStatement();
+    return failOnStatement;
   }
 
   int getTotalLivePass() {
