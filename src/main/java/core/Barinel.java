@@ -19,15 +19,15 @@ public class Barinel extends FaultLocalizationTechnique {
   }
 
   void calculateSuspiciousnessAndConfidence() {
-    this.setSuspiciousness(new double[this.getNumberOfStatements()]);
-    this.setConfidence(new double[this.getNumberOfStatements()]);
-    for (int i = 0; i < this.getNumberOfStatements(); i++) {
-      if (this.getFailOnStatement()[i] == 0 && this.getPassOnStatement()[i] == 0) {
-        this.setSuspiciousness(i, -1);
-        this.setConfidence(i, -1);
+    setSuspiciousness(new double[getNumberOfStatements()]);
+    setConfidence(new double[getNumberOfStatements()]);
+    for (int i = 0; i < getNumberOfStatements(); i++) {
+      if (getFailOnStatement()[i] == 0 && getPassOnStatement()[i] == 0) {
+        setSuspiciousness(i, -1);
+        setConfidence(i, -1);
       } else {
-        this.setSuspiciousness(i, 1 - 1.0 * this.getPassOnStatement()[i] / (this.getPassOnStatement()[i] + this.getFailOnStatement()[i]));
-        this.setConfidence(i, Math.max(this.getPassRatio()[i], this.getFailRatio()[i]));
+        setSuspiciousness(i, 1 - 1.0 * getPassOnStatement()[i] / (getPassOnStatement()[i] + getFailOnStatement()[i]));
+        setConfidence(i, Math.max(getPassRatio()[i], getFailRatio()[i]));
       }
     }
   }

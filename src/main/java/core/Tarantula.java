@@ -20,18 +20,18 @@ public class Tarantula extends FaultLocalizationTechnique {
   }
 
   void calculateSuspiciousnessAndConfidence() {
-    this.setSuspiciousness(new double[this.getNumberOfStatements()]);
-    this.setConfidence(new double[this.getNumberOfStatements()]);
-    for (int i = 0; i < this.getNumberOfStatements(); i++) {
-      if (this.getTotalLiveFail() == 0 && this.getTotalLivePass() == 0) {
-        this.setSuspiciousness(i, -1);
-        this.setConfidence(i, -1);
-      } else if (this.getFailRatio()[i] == 0 && this.getPassRatio()[i] == 0) {
-        this.setSuspiciousness(i, -1);
-        this.setConfidence(i, -1);
+    setSuspiciousness(new double[getNumberOfStatements()]);
+    setConfidence(new double[getNumberOfStatements()]);
+    for (int i = 0; i <getNumberOfStatements(); i++) {
+      if (getTotalLiveFail() == 0 && getTotalLivePass() == 0) {
+        setSuspiciousness(i, -1);
+        setConfidence(i, -1);
+      } else if (getFailRatio()[i] == 0 && getPassRatio()[i] == 0) {
+        setSuspiciousness(i, -1);
+        setConfidence(i, -1);
       } else {
-        this.setSuspiciousness(i, this.getFailRatio()[i] / (this.getFailRatio()[i] + this.getPassRatio()[i]));
-        this.setConfidence(i, Math.max(this.getFailRatio()[i], this.getPassRatio()[i]));
+        setSuspiciousness(i, getFailRatio()[i] / (getFailRatio()[i] + getPassRatio()[i]));
+        setConfidence(i, Math.max(getFailRatio()[i], getPassRatio()[i]));
       }
     }
   }

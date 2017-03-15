@@ -21,11 +21,11 @@ public class Op2 extends FaultLocalizationTechnique {
   }
 
   void calculateSuspiciousnessAndConfidence() {
-    this.setSuspiciousness(new double[this.getNumberOfStatements()]);
-    this.setConfidence(new double[this.getNumberOfStatements()]);
-    for (int i = 0; i < this.getNumberOfStatements(); i++) {
-      this.setSuspiciousness(i, this.getFailOnStatement()[i] - (1.0 * this.getPassOnStatement()[i] / (this.getTotalLivePass() + 1)));
-      this.setSuspiciousness(i, Math.max(this.getPassRatio()[i], this.getFailRatio()[i]));
+    setSuspiciousness(new double[getNumberOfStatements()]);
+    setConfidence(new double[getNumberOfStatements()]);
+    for (int i = 0; i < getNumberOfStatements(); i++) {
+      setSuspiciousness(i, getFailOnStatement()[i] - (1.0 * getPassOnStatement()[i] / (getTotalLivePass() + 1)));
+      setSuspiciousness(i, Math.max(getPassRatio()[i], getFailRatio()[i]));
     }
 
   }
