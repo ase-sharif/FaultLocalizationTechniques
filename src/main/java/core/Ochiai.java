@@ -19,6 +19,18 @@ public class Ochiai extends FaultLocalizationTechnique {
   }
 
   void calculateSuspiciousnessAndConfidence() {
-
+    setSuspiciousness(new double[getNumberOfStatements()]);
+    setConfidence(new double[getNumberOfStatements()]);
+    for (int i = 0; i < getNumberOfStatements(); i++) {
+      if (getTotalLiveFail() == 0) {
+        setSuspiciousness(i, -1);
+        setConfidence(i, -1);
+      } else if (getFailOnStatement()[i] == 0 && getPassOnStatement()[i] == 0) {
+        setSuspiciousness(i, -1);
+        setConfidence(i, -1);
+      } else {
+        setSuspiciousness(i, 1.0 * getFailOnStatement()[i] / Math.sqrt(getTotalLiveFail() * (getFailOnStatement()[i] + getPassOnStatement()[i])));
+      }
+    }
   }
 }
