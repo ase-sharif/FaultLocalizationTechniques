@@ -30,6 +30,7 @@ public class Ochiai extends FaultLocalizationTechnique {
         setConfidence(i, -1);
       } else {
         setSuspiciousness(i, 1.0 * getFailOnStatement()[i] / Math.sqrt(getTotalLiveFail() * (getFailOnStatement()[i] + getPassOnStatement()[i])));
+        setConfidence(i, Math.max(getFailRatio()[i], getPassRatio()[i]));
       }
     }
   }
